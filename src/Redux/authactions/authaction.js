@@ -1,7 +1,9 @@
 import axios from "axios";
-import { baseUrl } from "../../main";
+import { baseUrl } from "../../App";
+import toast from "react-hot-toast";
 
-export const singupAction = (data, navigate) => {
+
+export const singUpAction = (data, navigate) => {
   return (dispatch) => {
     axios
       .post(`${baseUrl}/users/signup`, data)
@@ -21,7 +23,7 @@ export const loginAction = (data, navigate) => {
     axios
       .post(`${baseUrl}/users/login`, data)
       .then((res) => {
-        alert(res?.data?.message);
+        toast(res?.data?.message);
         if (res?.data.userInfo.role == "user") {
             dispatch({
                 type:"login",

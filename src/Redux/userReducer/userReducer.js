@@ -1,15 +1,16 @@
 const initialState = {
-    products:[],
-    cart:[]
+  products: [],
+  cart: [],
 };
 
+export const usersReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "fetchProductsUser":
+      return { ...state, products: action.payload };
 
-
-export const usersReducer = (state=initialState, action)=>{
-    switch (action.type) {
-       case "fetchProductsUser":
-        return {...state, products:action.payload}
-        default:
-            return state
-    }
-}
+    case "fetchCart":
+      return { ...state, cart: action.payload };
+    default:
+      return state;
+  }
+};
